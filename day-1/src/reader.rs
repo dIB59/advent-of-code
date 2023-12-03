@@ -13,7 +13,7 @@ impl Reader for FirstAndLastInteger {
                 .collect();
             Self::first_last_ints(&mut numbers, chars);
         }
-        return numbers
+        return numbers;
     }
 }
 
