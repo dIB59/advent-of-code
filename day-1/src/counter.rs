@@ -9,16 +9,8 @@ pub struct SimplePositionCounter;
 //TODO: Such that SimplePositionCounter does not have to duplicate code
 impl Counter for SimpleParenthesesCounter {
     fn count_char(&self, input: &str) -> i32 {
-        let mut count: i32 = 0;
-        for c in input.chars() {
-            if c.eq_ignore_ascii_case(&'(') {
-                count += 1;
-            }
-            if c.eq_ignore_ascii_case(&')') {
-                count -= 1;
-            }
-        }
-        count
+        input.chars().filter(|c| *c == '(').count() as i32 -
+            input.chars().filter(|c| *c == ')').count() as i32
     }
 }
 
