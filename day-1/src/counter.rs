@@ -5,6 +5,8 @@ pub trait Counter {
 pub struct SimpleParenthesesCounter;
 pub struct SimplePositionCounter;
 
+//TODO: Refactor SimpleParenthesesCounter such that it is open for extension
+//TODO: Such that SimplePositionCounter does not have to duplicate code
 impl Counter for SimpleParenthesesCounter {
     fn count_char(&self, input: &str) -> i32 {
         let mut count: i32 = 0;
