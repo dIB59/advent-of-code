@@ -3,6 +3,7 @@ pub trait Reader {
 }
 
 pub struct FirstAndLastInteger;
+pub struct FirstAndLastIntegerWords;
 
 impl Reader for FirstAndLastInteger {
     fn read(input: &str) -> Vec<i32> {
@@ -28,6 +29,7 @@ impl FirstAndLastInteger {
         if let Some(c) = chars.last() {
             some.push(*c);
         }
-        numbers.push(some.parse::<i32>().unwrap_or(0));
+        numbers.push(some.parse::<i32>()
+            .expect("Failed to parse as i32"));
     }
 }
