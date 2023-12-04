@@ -43,23 +43,16 @@ impl CubeGameResult {
     fn is_game_impossible(data: &mut Vec<&str>) -> bool {
         for &mut item in data {
             let parts: Vec<&str> = item.split(',').collect();
-
             for part in parts {
                 let tokens: Vec<&str> = part.trim().split_whitespace().collect();
                 if tokens.len() == 2 {
                     let color = tokens[1];
-                    let number: i32 = tokens[0].parse().unwrap_or(0);
+                    let number: i32 = tokens[0].parse().expect("Expected a int character");
 
                     match color {
-                        "red" => {
-                            if number > 12 { return Some(true).expect("sa"); }
-                        }
-                        "green" => {
-                            if number > 13 { return Some(true).expect("sa"); }
-                        }
-                        "blue" => {
-                            if number > 14 { return Some(true).expect("sa"); }
-                        }
+                        "red" if number > 12 => return true,
+                        "green" if number > 13 => return true,
+                        "blue" if number > 14 => return true,
                         _ => {}
                     }
                 }
